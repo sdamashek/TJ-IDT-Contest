@@ -9,8 +9,8 @@ import requests, functools
 class Page:
     def __init__(self, url, content = None):
         if isinstance(url, str):
-        	if url[0:4] != 'http':
-        		url = 'http://{0}'.format(url)
+            if url[0:4] != 'http':
+        	    url = 'http://{0}'.format(url)
             self.url = url.lower()
         else: raise NotImplementedError
 
