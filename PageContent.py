@@ -9,6 +9,8 @@ import requests, functools
 class Page:
     def __init__(self, url, content = None):
         if isinstance(url, str):
+        	if url[0:4] != 'http':
+        		url = 'http://{0}'.format(url)
             self.url = url.lower()
         else: raise NotImplementedError
 
@@ -34,5 +36,5 @@ class Page:
         return (self.url, self.content) < (other.url, other.content)
 
     def __hash__(self):
-        return hash(self.url, self.content)
+        return hash( (self.url, self.content) )
 ## END OF CLASS
