@@ -9,6 +9,12 @@ import requests
 class BasicTest():
     #Initialize a testcase with the given url
     def __init__(self, url):
+        if isinstance(url, str):
+            if url[0:4] != 'http':
+                url = 'http://{0}'.format(url)
+            self.url = url.lower()
+        else: raise NotImplementedError
+        
         self.page = requests.get(url)
 
     def teststatus(self):
